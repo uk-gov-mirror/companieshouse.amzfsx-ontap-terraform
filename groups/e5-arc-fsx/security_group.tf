@@ -17,8 +17,8 @@ resource "aws_vpc_security_group_ingress_rule" "fsx_ssh_https" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "fsx_ssh" {
-  count             = length(data.aws_subnets.storage_subnets.ids)
-  
+  count = length(data.aws_subnets.storage_subnets.ids)
+
   description       = "Allow SSH connectivity for ${var.fsx_fs_name}"
   security_group_id = aws_security_group.e5_arc_fsx.id
   ip_protocol       = "tcp"
@@ -28,8 +28,8 @@ resource "aws_vpc_security_group_ingress_rule" "fsx_ssh" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "fsx_https" {
-  count             = length(data.aws_subnets.storage_subnets.ids)
-  
+  count = length(data.aws_subnets.storage_subnets.ids)
+
   description       = "Allow HTTPS connectivity for ${var.fsx_fs_name}"
   security_group_id = aws_security_group.e5_arc_fsx.id
   ip_protocol       = "tcp"
@@ -39,8 +39,8 @@ resource "aws_vpc_security_group_ingress_rule" "fsx_https" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "fsx_app_https" {
-  count             = length(data.aws_subnets.application_subnets.ids)
-  
+  count = length(data.aws_subnets.application_subnets.ids)
+
   description       = "Allow HTTPS connectivity for ${var.fsx_fs_name}"
   security_group_id = aws_security_group.e5_arc_fsx.id
   ip_protocol       = "tcp"
@@ -50,8 +50,8 @@ resource "aws_vpc_security_group_ingress_rule" "fsx_app_https" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "fsx_iscsi" {
-  count             = length(data.aws_subnets.storage_subnets.ids)
-  
+  count = length(data.aws_subnets.storage_subnets.ids)
+
   description       = "Allow ISCSI connectivity for ${var.fsx_fs_name}"
   security_group_id = aws_security_group.e5_arc_fsx.id
   ip_protocol       = "tcp"
@@ -61,8 +61,8 @@ resource "aws_vpc_security_group_ingress_rule" "fsx_iscsi" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "fsx_iscsi_data" {
-  count             = length(data.aws_subnets.data_subnets.ids)
-  
+  count = length(data.aws_subnets.data_subnets.ids)
+
   description       = "Allow ISCSI connectivity for ${var.fsx_fs_name}"
   security_group_id = aws_security_group.e5_arc_fsx.id
   ip_protocol       = "tcp"
@@ -72,8 +72,8 @@ resource "aws_vpc_security_group_ingress_rule" "fsx_iscsi_data" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "fsx_snap_ndmp" {
-  count             = length(data.aws_subnets.storage_subnets.ids)
-  
+  count = length(data.aws_subnets.storage_subnets.ids)
+
   description       = "Allow SnapMirror operations ${var.fsx_fs_name}"
   security_group_id = aws_security_group.e5_arc_fsx.id
   ip_protocol       = "tcp"
@@ -83,8 +83,8 @@ resource "aws_vpc_security_group_ingress_rule" "fsx_snap_ndmp" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "fsx_snap_cluster" {
-  count             = length(data.aws_subnets.storage_subnets.ids)
-  
+  count = length(data.aws_subnets.storage_subnets.ids)
+
   description       = "Allow SnapMirror operations ${var.fsx_fs_name}"
   security_group_id = aws_security_group.e5_arc_fsx.id
   ip_protocol       = "tcp"
