@@ -94,21 +94,21 @@ variable "fsx_fs_mgmt_dns_record" {
 }
 
 variable "e5_fin_data_size" {
-  type = number
+  type        = number
   description = "Volume Size in Mb"
-  default = "1"
+  default     = "1"
 }
 
 variable "e5_fin_fra_size" {
-  type = number
+  type        = number
   description = "Volume Size in Mb"
-  default = "1"
+  default     = "1"
 }
 
 variable "e5_fin_redo_size" {
-  type = number
+  type        = number
   description = "Volume Size in Mb"
-  default = "1"
+  default     = "1"
 }
 
 variable "e5_fin_data_count" {

@@ -1,23 +1,26 @@
-
 resource "aws_cloudwatch_metric_alarm" "fsx_percent_used_capacity" {
-  count = var.monitoring ? 1 : 0
-
+  count             = var.monitoring ? 1 : 0
+ 
   alarm_name        = "${local.common_resource_name}-fsx-percent-used-capacity"
   alarm_description = "Alarm when FSx percent used capacity exceeds the configured threshold."
   namespace         = "AWS/FSx"
-  metric_name       = "PercentUsedCapacity"
+  metric_name       = "StorageCapacityUtilization"
   dimensions = {
-    FileSystemId = aws_fsx_ontap_file_system.chips_oltp_dg_g2_fsx.id
+    FileSystemId = aws_fsx_ontap_file_system.chips_oltp_g2_fsx.id,
+    StorageTier  = "SSD",
+    DataType     = "All",
+    Aggregate    = "aggr1"
   }
   statistic           = "Average"
   period              = 300
   evaluation_periods  = 3
   threshold           = 90
   comparison_operator = "GreaterThanThreshold"
-  alarm_actions       = [aws_sns_topic.chips_oltp_dg_g2_fsx[0].arn]
-  ok_actions          = [aws_sns_topic.chips_oltp_dg_g2_fsx[0].arn]
+  alarm_actions       = [aws_sns_topic.chips_oltp_g2_fsx[0].arn]
+  ok_actions          = [aws_sns_topic.chips_oltp_g2_fsx[0].arn]
   treat_missing_data  = "notBreaching"
 }
+
 
 #resource "aws_cloudwatch_dashboard" "fsx" {
 #  count = var.monitoring ? 1 : 0
