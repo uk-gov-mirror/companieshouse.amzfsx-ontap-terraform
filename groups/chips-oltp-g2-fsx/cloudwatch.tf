@@ -21,6 +21,26 @@ resource "aws_cloudwatch_metric_alarm" "fsx_percent_used_capacity" {
   treat_missing_data  = "notBreaching"
 }
 
+resource "aws_cloudwatch_metric_alarm" "fsx_network_throughput" {
+  count             = var.monitoring ? 1 : 0
+ 
+  alarm_name        = "${local.common_resource_name}-fsx-network-throughput"
+  alarm_description = "Alarm when FSx network throughput goes above the configured threshold."
+  namespace         = "AWS/FSx"
+  metric_name       = "NetworkThroughput"
+  dimensions = {
+    FileSystemId = aws_fsx_ontap_file_system.chips_oltp_g2_fsx.id
+  }
+  statistic           = "Average"
+  period              = 300
+  evaluation_periods  = 3
+  threshold           = 90
+  comparison_operator = "GreaterThanThreshold"
+  alarm_actions       = [aws_sns_topic.chips_oltp_g2_fsx[0].arn]
+  ok_actions          = [aws_sns_topic.chips_oltp_g2_fsx[0].arn]
+  treat_missing_data  = "notBreaching"
+}
+
 #resource "aws_cloudwatch_dashboard" "fsx" {
 #  count = var.monitoring ? 1 : 0
 #
