@@ -1,8 +1,8 @@
 locals {
   common_resource_name  = "${var.environment}-${var.fsx_fs_name}"
   fsx_admin_password    = data.vault_kv_secret_v2.nfs_fsx_credentials.data["fsxadmin_password"]
-  netapp_account_id     = data.vault_generic_secret.netapp_account_id.data["account-id"]
-  netapp_fsx_account_id = data.vault_generic_secret.netapp_fsx_account_id.data["account-id"]
+  netapp_account_id     = data.vault_kv_secret_v2.netapp_account_id.data["account-id"]
+  netapp_fsx_account_id = data.vault_kv_secret_v2.netapp_fsx_account_id.data["account-id"]
 
   storage_subnet_a_id = data.aws_subnet.subnet_storage_a.id
   storage_subnet_b_id = data.aws_subnet.subnet_storage_b.id
