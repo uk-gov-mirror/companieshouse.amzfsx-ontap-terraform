@@ -68,10 +68,12 @@ data "vault_kv_secret_v2" "nfs_fsx_credentials" {
   name  = "${var.aws_account}/amzfsx/nfs-fsx/credentials"
 }
 
-data "vault_generic_secret" "netapp_account_id" {
-  path = "applications/shared-services-eu-west-2/netapp/account"
+data "vault_kv_secret_v2" "netapp_account_id" {
+  mount = "team-unix-storage"
+  name  = "shared-secrets/netapp/account"
 }
 
-data "vault_generic_secret" "netapp_fsx_account_id" {
-  path = "applications/shared-services-eu-west-2/netapp/fsx/"
+data "vault_kv_secret_v2" "netapp_fsx_account_id" {
+  mount = "team-unix-storage"
+  name  = "shared-secrets/netapp/fsx"
 }
