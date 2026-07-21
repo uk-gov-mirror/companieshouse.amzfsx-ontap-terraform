@@ -6,7 +6,7 @@ environment = "live"
 
 #FSX config
 fsx_fs_name             = "CHIPS_OLTP_DG_G2_FSx"
-fsx_storage_capacity    = 5000
+fsx_storage_capacity    = 6500
 fsx_deployment_type     = "SINGLE_AZ_2"
 fsx_throughput_capacity = 1536
 fsx_auto_backup_retention = 0
