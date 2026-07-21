@@ -1,6 +1,6 @@
 resource "aws_cloudwatch_metric_alarm" "fsx_percent_used_capacity" {
-  count             = var.monitoring ? 1 : 0
- 
+  count = var.monitoring ? 1 : 0
+
   alarm_name        = "${local.common_resource_name}-fsx-percent-used-capacity"
   alarm_description = "Alarm when FSx percent used capacity exceeds the configured threshold."
   namespace         = "AWS/FSx"
@@ -22,8 +22,8 @@ resource "aws_cloudwatch_metric_alarm" "fsx_percent_used_capacity" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "fsx_fsnetwork_throughput" {
-  count             = var.monitoring ? 1 : 0
- 
+  count = var.monitoring ? 1 : 0
+
   alarm_name        = "${local.common_resource_name}-fsx-fsnetwork-throughput"
   alarm_description = "Alarm when FSx network throughput goes above the configured threshold."
   namespace         = "AWS/FSx"
@@ -42,8 +42,8 @@ resource "aws_cloudwatch_metric_alarm" "fsx_fsnetwork_throughput" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "fsx_fsdisk_throughput" {
-  count             = var.monitoring ? 1 : 0
- 
+  count = var.monitoring ? 1 : 0
+
   alarm_name        = "${local.common_resource_name}-fsx-fsdisk-throughput"
   alarm_description = "Alarm when FSx fileserver disk throughput goes above the configured threshold."
   namespace         = "AWS/FSx"
@@ -62,8 +62,8 @@ resource "aws_cloudwatch_metric_alarm" "fsx_fsdisk_throughput" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "fsx_fsdisk_iops" {
-  count             = var.monitoring ? 1 : 0
- 
+  count = var.monitoring ? 1 : 0
+
   alarm_name        = "${local.common_resource_name}-fsx-fsdisk-iops"
   alarm_description = "Alarm when FSx fileserver disk IOPS goes above the configured threshold."
   namespace         = "AWS/FSx"
@@ -82,8 +82,8 @@ resource "aws_cloudwatch_metric_alarm" "fsx_fsdisk_iops" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "fsx_fscpu_utilization" {
-  count             = var.monitoring ? 1 : 0
- 
+  count = var.monitoring ? 1 : 0
+
   alarm_name        = "${local.common_resource_name}-fsx-fscpu-utilization"
   alarm_description = "Alarm when FSx fileserver CPU utilization goes above the configured threshold."
   namespace         = "AWS/FSx"
@@ -102,8 +102,8 @@ resource "aws_cloudwatch_metric_alarm" "fsx_fscpu_utilization" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "fsx_disk_iops_utilization" {
-  count             = var.monitoring ? 1 : 0
- 
+  count = var.monitoring ? 1 : 0
+
   alarm_name        = "${local.common_resource_name}-fsx-disk-iops-utilization"
   alarm_description = "Alarm when FSx disk IOPS utilization goes above the configured threshold."
   namespace         = "AWS/FSx"

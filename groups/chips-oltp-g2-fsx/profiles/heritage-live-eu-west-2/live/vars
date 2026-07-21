@@ -1,20 +1,19 @@
 # Account details
-
 aws_account = "heritage-live-eu-west-2"
 aws_region  = "eu-west-2"
 environment = "live"
 
 #FSX config
 fsx_fs_name             = "CHIPS_OLTP_G2_FSx"
-fsx_storage_capacity    = "5500"
+fsx_storage_capacity    = 6500
 fsx_deployment_type     = "SINGLE_AZ_2"
-fsx_throughput_capacity = "1536"
-fsx_auto_backup_retention = "0"
+fsx_throughput_capacity = 1536
+fsx_auto_backup_retention = 0
 
 #Fsx Create Volumes
-create_data_volumes = "true"
-create_fra_volumes  = "true"
-create_redo_volumes = "true"
+create_data_volumes = true
+create_fra_volumes  = true
+create_redo_volumes = true
 
 #FSX Volume Sizes
 chips_oltp_g2_data_size = 5500000
@@ -30,4 +29,4 @@ chips_oltp_g2_redo_count = 4
 fsx_fs_mgmt_dns_name = "chips-oltp-g2-fsx-mgmt"
 
 #Cloudwatch
-monitoring = "true"
+monitoring = true
