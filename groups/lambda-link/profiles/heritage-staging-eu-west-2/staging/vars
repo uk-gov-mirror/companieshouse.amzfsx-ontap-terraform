@@ -1,6 +1,6 @@
 # Account details
 
-aws_account = "heritage-staging-eu-west-2"
+aws_account = "heritage-staging"
 aws_region  = "eu-west-2"
 environment = "staging"
 
