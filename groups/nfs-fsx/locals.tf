@@ -23,7 +23,8 @@ locals {
   }
 
   application_cidr_blocks = [for subnet in data.aws_subnet.application_subnet : subnet.cidr_block]
-  nfs_cidr_blocks         = concat(local.application_cidr_blocks)
+  web_cidr_blocks         = [for subnet in data.aws_subnet.web_subnet : subnet.cidr_block]
+  nfs_cidr_blocks         = concat(local.application_cidr_blocks, local.web_cidr_blocks)
   nfs_ingress_cidrs       = length(local.nfs_cidr_blocks) >= 1 ? setproduct(local.nfs_cidr_blocks, var.nfs_ports) : []
 
 }

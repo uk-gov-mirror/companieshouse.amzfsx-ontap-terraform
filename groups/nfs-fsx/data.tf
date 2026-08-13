@@ -43,6 +43,18 @@ data "aws_subnet" "application_subnet" {
   id       = each.value
 }
 
+data "aws_subnets" "web_subnets" {
+  filter {
+    name   = "tag:Name"
+    values = ["sub-web-*"]
+  }
+}
+
+data "aws_subnet" "web_subnet" {
+  for_each = toset(data.aws_subnets.web_subnets.ids)
+  id       = each.value
+}
+
 data "aws_vpc" "heritage" {
   filter {
     name   = "tag:Name"

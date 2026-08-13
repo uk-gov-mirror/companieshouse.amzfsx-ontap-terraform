@@ -12,3 +12,4 @@ fsx_auto_backup_retention = "0"
 
 # DNS
 fsx_fs_mgmt_dns_name = "nfs-fsx-mgmt"
+fsx_fs_nfs_dns_name = "nfs-fsx"
