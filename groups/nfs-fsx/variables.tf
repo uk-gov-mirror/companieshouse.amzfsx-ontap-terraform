@@ -71,6 +71,12 @@ variable "fsx_fs_mgmt_dns_name" {
   default     = false
 }
 
+variable "fsx_fs_nfs_dns_name" {
+  type        = string
+  description = "The dns name for the FSx filesystem NFS address"
+  default     = false
+}
+
 variable "nfs_ports" {
   type        = list(any)
   description = "A list of ports and protocols used for NFS client access"
