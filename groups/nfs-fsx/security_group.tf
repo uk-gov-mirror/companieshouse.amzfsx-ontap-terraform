@@ -106,6 +106,16 @@ resource "aws_vpc_security_group_ingress_rule" "fsx_snap_cluster" {
   to_port           = 11105
 }
 
+resource "aws_vpc_security_group_ingress_rule" "fsx_icmp" {
+  count             = length(data.aws_subnets.storage_subnets.ids)
+  description       = "Allow ICMP Ping ${var.fsx_fs_name}"
+  security_group_id = aws_security_group.nfs_fsx.id
+  ip_protocol       = "icmp"
+  cidr_ipv4         = values(data.aws_subnet.storage_subnet)[count.index].cidr_block
+  from_port         = 8
+  to_port           = 0
+}
+
 ### Egress Rules
 
 resource "aws_vpc_security_group_egress_rule" "fsx_all_out" {
