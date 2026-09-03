@@ -6,8 +6,7 @@ resource "aws_fsx_ontap_volume" "e5_nfs_vol_01" {
   storage_virtual_machine_id = aws_fsx_ontap_storage_virtual_machine.e5_nfs_svm.id
 
   tiering_policy {
-    name           = "AUTO"
-    cooling_period = 31
+    name           = "NONE"
   }
 
   lifecycle {
