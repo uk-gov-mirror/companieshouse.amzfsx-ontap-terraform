@@ -59,6 +59,10 @@ data "aws_ec2_managed_prefix_list" "administration_cidr_ranges" {
   name = "administration-cidr-ranges"
 }
 
+data "aws_ec2_managed_prefix_list" "shared_services_management_cidrs" {
+  name = "shared-services-management-cidrs"
+}
+
 data "vault_generic_secret" "fsx_admin_password" {
   path = "applications/${var.aws_account}-${var.aws_region}/amzfsx/e5-nfs-fsx"
 }

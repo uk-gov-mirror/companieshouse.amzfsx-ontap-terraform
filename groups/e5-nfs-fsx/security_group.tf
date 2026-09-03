@@ -50,6 +50,15 @@ resource "aws_vpc_security_group_ingress_rule" "fsx_https" {
   to_port           = 443
 }
 
+resource "aws_vpc_security_group_ingress_rule" "fsx_ci_https" {
+  description       = "Allow HTTPS connectivity between Concourse and ${var.fsx_fs_name}"
+  security_group_id = aws_security_group.e5_nfs_fsx.id
+  ip_protocol       = "tcp"
+  prefix_list_id    = data.aws_ec2_managed_prefix_list.shared_services_management_cidrs.id
+  from_port         = 443
+  to_port           = 443
+}
+
 resource "aws_vpc_security_group_ingress_rule" "fsx_app_https" {
   count = length(data.aws_subnets.application_subnets.ids)
 
